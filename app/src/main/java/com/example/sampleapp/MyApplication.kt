@@ -1,6 +1,7 @@
 package com.example.sampleapp
 
 import android.app.Application
+import android.content.Intent
 import com.moengage.core.LogLevel
 import com.moengage.core.MoEngage
 import com.moengage.core.config.FcmConfig
@@ -8,6 +9,7 @@ import com.moengage.core.config.LogConfig
 import com.moengage.core.config.NotificationConfig
 import com.moengage.core.config.TrackingOptOutConfig
 import com.moengage.core.enableAdIdTracking
+import com.moengage.inbox.ui.view.InboxActivity
 
 class MyApplication : Application() {
     override fun onCreate() {
@@ -41,12 +43,22 @@ class MyApplication : Application() {
 //        MoEngage.initialise(moEngage)
 
         // New v12 config
-        val moEngage = MoEngage.Builder(this, "9H3BB5EOSEKHUQC1M6ZQLAPR")
+        val moEngage = MoEngage.Builder(this, "2877NHMD0TOHATHC6NNHDERW")
             .configureLogs(LogConfig(LogLevel.VERBOSE))
-            .enableEncryption()
+            .configureNotificationMetaData(
+                NotificationConfig(
+                    smallIcon = R.drawable.small_icon,
+                    largeIcon = R.drawable.large_icon,
+                    R.color.purple_500,
+                    isMultipleNotificationInDrawerEnabled = true,
+                    true,
+                    isLargeIconDisplayEnabled = true
+            )
+            )
             .build()
         MoEngage.initialiseDefaultInstance(moEngage)
         enableAdIdTracking(this)
+
 
     }
 

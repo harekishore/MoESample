@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.sampleapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -36,10 +37,17 @@
             </intent-filter>
         </service>
 
-<!--        <activity-->
-<!--            android:name="com.moe.pushlibrary.activities.MoEActivity"-->
-<!--            android:label="richLanding"-->
-<!--            android:parentActivityName=".MainActivity"></activity>-->
+        <activity
+            tools:replace="android:label"
+            android:name="com.moe.pushlibrary.activities.MoEActivity"
+            android:label=".Richactivity"
+            android:parentActivityName=".SecondActivity" >
+        </activity>
+
+        <activity
+            android:name="com.moengage.cards.ui.CardActivity"
+            android:label="@string/moe_card_feed_title"
+            android:theme="@style/MoECardTheme.NoActionBar"/>
     </application>
 
 </manifest>
