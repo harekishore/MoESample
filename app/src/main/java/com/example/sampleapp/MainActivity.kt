@@ -1,13 +1,17 @@
 package com.example.sampleapp
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import com.google.android.gms.tasks.Task
 import com.moe.pushlibrary.MoEHelper
 import com.moengage.core.Properties
+import com.moengage.core.analytics.MoEAnalyticsHelper
+import com.moengage.core.enableAdIdTracking
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button2).setOnClickListener { trackEvent() }
         findViewById<Button>(R.id.button3).setOnClickListener { logout() }
         findViewById<Button>(R.id.button4).setOnClickListener { others() }
-
     }
 
     fun nextActivity(){
@@ -31,15 +34,15 @@ class MainActivity : AppCompatActivity() {
         val name:String = findViewById<TextView?>(R.id.name).text.toString()
         val email:String = findViewById<TextView?>(R.id.email).text.toString()
 
-        MoEHelper.getInstance(this).setUniqueId("$email")
-        MoEHelper.getInstance(this).setEmail("$email")
-        MoEHelper.getInstance(this).setFullName("$name")
+        MoEAnalyticsHelper.setUniqueId(this,"$email")
+        MoEAnalyticsHelper.setEmailId(this, "$email")
+        MoEAnalyticsHelper.setFirstName(this,"$name")
 
     }
 
     private fun trackEvent (){
 //        Log.d("Some Tag","This is an event log")
-        MoEHelper.getInstance(this).trackEvent("addToCart", Properties().addAttribute("itemName","iphone"))
+        MoEAnalyticsHelper.trackEvent(this,"addToCart", Properties().addAttribute("itemName","iphone"))
     }
 
 

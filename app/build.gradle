@@ -38,8 +38,36 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation("androidx.lifecycle:lifecycle-process:2.2.0")
-    implementation("com.moengage:moe-android-sdk:11.5.00")
-    implementation("com.moengage:rich-notification:2.4.0")
+
+    // core moengage features
+    implementation(moengage.core)
+    // optionally add this to use the cards feature
+    implementation(moengage.cardsUi)
+    // optionally add this if you are using the core module of cards
+    implementation(moengage.cardsCore)
+    // optionally add this to use the geofence feature
+    implementation(moengage.geofence)
+    // optionally add this to use the Huaewi PushKit feature
+    implementation(moengage.pushKit)
+    // optionally add this to use the Push Amp Plus feature
+    implementation(moengage.pushAmpPlus)
+    // optionally add this to use the Inbox UI feature
+    implementation(moengage.inboxUi)
+    // optionally add this if you are using the core module of Inbox
+    implementation(moengage.inboxCore)
+    // optionally add this to use the Push Templates feature
+    implementation(moengage.richNotification)
+    // optionally add this to use the Device Trigger feature
+    implementation(moengage.deviceTrigger)
+    // optionally add this to use the Push Amp feature
+    implementation(moengage.pushAmp)
+    // optionally add this to use the InApp feature
+    implementation(moengage.inapp)
+//    implementation(moengage.security) - Check with the team regarding this one
+
+//    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
+//    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
      implementation 'com.google.android.gms:play-services-location:19.0.1'
