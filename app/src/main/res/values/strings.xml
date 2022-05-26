@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">sampleApp</string>
+    <string name="moe_card_feed_title">Cards Inbox</string>
 </resources>

@@ -4,10 +4,7 @@ import android.app.Application
 import android.content.Intent
 import com.moengage.core.LogLevel
 import com.moengage.core.MoEngage
-import com.moengage.core.config.FcmConfig
-import com.moengage.core.config.LogConfig
-import com.moengage.core.config.NotificationConfig
-import com.moengage.core.config.TrackingOptOutConfig
+import com.moengage.core.config.*
 import com.moengage.core.enableAdIdTracking
 import com.moengage.inbox.ui.view.InboxActivity
 
@@ -55,6 +52,14 @@ class MyApplication : Application() {
                     isLargeIconDisplayEnabled = true
             )
             )
+            .configureCards(CardConfig(
+                isSwipeRefreshEnabled = true
+            ))
+            .configureTrackingOptOut(TrackingOptOutConfig(
+                isCarrierTrackingEnabled = true,
+                isDeviceAttributeTrackingEnabled = true,
+
+            ))
             .build()
         MoEngage.initialiseDefaultInstance(moEngage)
         enableAdIdTracking(this)
