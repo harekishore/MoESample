@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/triggerEvent" android:title="@string/trigger_event" />
+    <item android:id="@+id/nextActivity" android:title="@string/nextActivity" />
+    <item android:id="@+id/logout" android:title="@string/logout" />
+    <item android:id="@+id/others" android:title="@string/others" />
+</menu>

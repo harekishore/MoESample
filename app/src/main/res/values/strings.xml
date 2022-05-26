@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">sampleApp</string>
     <string name="moe_card_feed_title">Cards Inbox</string>
+    <string name="trigger_event">Trigger Event</string>
+    <string name="nextActivity">Next Activity</string>
+    <string name="logout">Logout</string>
+    <string name="others">Others</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
