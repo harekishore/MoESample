@@ -33,6 +33,7 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        MoEInAppHelper.getInstance().setInAppContext(setOf("Second"))
         MoEInAppHelper.getInstance().showInApp(this)
     }
 

@@ -8,12 +8,10 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.gms.tasks.Task
-import com.moe.pushlibrary.MoEHelper
 import com.moengage.cards.ui.CardActivity
 import com.moengage.core.MoECoreHelper
 import com.moengage.core.Properties
 import com.moengage.core.analytics.MoEAnalyticsHelper
-import com.moengage.core.enableAdIdTracking
 import com.moengage.inapp.MoEInAppHelper
 import com.moengage.inbox.ui.view.InboxActivity
 
@@ -26,10 +24,10 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button).setOnClickListener { trackUser() }
         findViewById<Button>(R.id.button2).setOnClickListener { trackEvent() }
         findViewById<Button>(R.id.button3).setOnClickListener { logout() }
-        findViewById<Button>(R.id.button4).setOnClickListener { others() }
+        findViewById<Button>(R.id.button4).setOnClickListener { deviceLocale() }
         findViewById<Button>(R.id.button6).setOnClickListener { appInbox() }
         findViewById<Button>(R.id.button7).setOnClickListener { cards() }
-        var nudge = findViewById<com.moengage.widgets.NudgeView>(R.id.nudge)
+//        var nudge = findViewById<com.moengage.widgets.NudgeView>(R.id.nudge)
 
 
     }
@@ -64,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         MoECoreHelper.logoutUser(this)
     }
 
-    private fun others(){
+    private fun deviceLocale(){
         MoEAnalyticsHelper.trackDeviceLocale(this);
     }
 
@@ -85,8 +83,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        MoEInAppHelper.getInstance().resetInAppContext()
         MoEInAppHelper.getInstance().showInApp(this)
-        findViewById<com.moengage.widgets.NudgeView>(R.id.nudge).initialiseNudgeView(activity = Activity())
+//        findViewById<com.moengage.widgets.NudgeView>(R.id.nudge).initialiseNudgeView(activity = Activity())
         Log.d("MYTAG","Main onStart called...")
     }
 
