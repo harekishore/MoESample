@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
         MoEAnalyticsHelper.setUniqueId(this,"$email")
         MoEAnalyticsHelper.setEmailId(this, "$email")
         MoEAnalyticsHelper.setFirstName(this,"$name")
+//        MoEAnalyticsHelper.setUserAttribute(this,"Name", "$name")
+        MoEAnalyticsHelper.trackEvent(this,"Sign Up", Properties().addAttribute("email","$email"))
 
     }
 
@@ -84,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         MoEInAppHelper.getInstance().resetInAppContext()
-        MoEInAppHelper.getInstance().showInApp(this)
+//        MoEInAppHelper.getInstance().showInApp(this)
 //        findViewById<com.moengage.widgets.NudgeView>(R.id.nudge).initialiseNudgeView(activity = Activity())
         Log.d("MYTAG","Main onStart called...")
     }
