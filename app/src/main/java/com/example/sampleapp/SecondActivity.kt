@@ -62,20 +62,18 @@ class SecondActivity : AppCompatActivity() {
 // Call Banner 1
         MoEInAppHelper.getInstance().setInAppContext(setOf("Chase1"))
         MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner1 ->
-            MoEInAppHelper.getInstance().resetInAppContext()
             MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
-            Log.e("Banner1","onStart() : onSelfHandledAvailable1() : $banner1")
+            Log.d("Banner1","onStart() : onSelfHandledAvailable1() : $banner1")
 //
             // Call Banner 2
             MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner2 ->
-                MoEInAppHelper.getInstance().resetInAppContext()
                 MoEInAppHelper.getInstance().setInAppContext(setOf("Chase3"))
-                Log.e("Banner2","onStart() : onSelfHandledAvailable1() : $banner2")
+                Log.d("Banner2","onStart() : onSelfHandledAvailable1() : $banner2")
 //
                 // Call Banner 3
                 MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner3->
+                    Log.d("Banner3","onStart() : onSelfHandledAvailable1() : $banner3")
                     MoEInAppHelper.getInstance().resetInAppContext()
-                    Log.e("Banner3","onStart() : onSelfHandledAvailable1() : $banner3")
                 }
             }
         }
