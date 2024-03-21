@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.moengage.cards.core.CARDS_CATEGORY_ALL
+import com.moengage.cards.core.MoECardHelper
 import com.moengage.core.disableDataTracking
 import com.moengage.inapp.MoEInAppHelper
 import com.moengage.core.enableDataTracking
@@ -24,6 +26,7 @@ class SecondActivity : AppCompatActivity() {
 
     fun goBack(){
         val intent = Intent(this,MainActivity::class.java)
+        MoECardHelper.onCardSectionUnloaded(this);
         startActivity(intent)
     }
 
@@ -47,36 +50,33 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
 //        MoEInAppHelper.getInstance().setInAppContext(setOf("Chase1"))
-//        MoEInAppHelper.getInstance().getSelfHandledInApp(this, {Log.e("test","test") } )
-//        MoEInAppHelper.getInstance().getSelfHandledInApp(this, {Log.e("test","test") } )
-//        MoEInAppHelper.getInstance().resetInAppContext()
+//        MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner1 ->
+//            MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
+//            Log.d("Banner1","onStart() : onSelfHandledAvailable1() : $banner1")
+//            // Call Banner 2
+//            MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner2 ->
+//                MoEInAppHelper.getInstance().setInAppContext(setOf("Chase3"))
+//                Log.d("Banner2","onStart() : onSelfHandledAvailable1() : $banner2")
+//                // Call Banner 3
+//                MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner3->
+//                    Log.d("Banner3","onStart() : onSelfHandledAvailable1() : $banner3")
+//                    MoEInAppHelper.getInstance().resetInAppContext()
+//                }
+//            }
+//        }
 
-//
-//        MoEInAppHelper.getInstance().getSelfHandledInApp(this, {Log.e("test","test") } )
-//        MoEInAppHelper.getInstance().resetInAppContext()
-
-//        MoEInAppHelper.getInstance().showInApp(this)
-
-// Call Banner 1
-        MoEInAppHelper.getInstance().setInAppContext(setOf("Chase1"))
-        MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner1 ->
-            MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
-            Log.d("Banner1","onStart() : onSelfHandledAvailable1() : $banner1")
-//
-            // Call Banner 2
-            MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner2 ->
-                MoEInAppHelper.getInstance().setInAppContext(setOf("Chase3"))
-                Log.d("Banner2","onStart() : onSelfHandledAvailable1() : $banner2")
-//
-                // Call Banner 3
-                MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner3->
-                    Log.d("Banner3","onStart() : onSelfHandledAvailable1() : $banner3")
-                    MoEInAppHelper.getInstance().resetInAppContext()
-                }
-            }
-        }
+        // call on section or screen load
+        MoECardHelper.onCardSectionLoaded(this){}
+        var i = MoECardHelper.getCardCategories(this)
+        var j = MoECardHelper.getCardsForCategory(this, "Offers")
+        var k = MoECardHelper.getCardsForCategory(this, CARDS_CATEGORY_ALL)
+        var l = MoECardHelper.getCardsInfo(this)
+        Log.w("cardCategories", "$i")
+        Log.w("Offers cardContent", "$j" )
+        Log.w("allContents", "$k" )
+        Log.w("allCategories & Content", "$l" )
     }
 
-}
+    }
+
