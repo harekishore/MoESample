@@ -85,10 +85,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        MoEInAppHelper.getInstance().resetInAppContext()
 //        MoEInAppHelper.getInstance().showInApp(this)
 //        findViewById<com.moengage.widgets.NudgeView>(R.id.nudge).initialiseNudgeView(activity = Activity())
         Log.d("MYTAG","Main onStart called...")
+        MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
+        MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner2 ->
+            Log.d("Banner1","onStart() : onSelfHandledAvailable1() : $banner2")
+            MoEInAppHelper.getInstance().resetInAppContext()
+        }
     }
 
     override fun onStop() {

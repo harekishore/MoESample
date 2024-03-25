@@ -26,7 +26,8 @@ class SecondActivity : AppCompatActivity() {
 
     fun goBack(){
         val intent = Intent(this,MainActivity::class.java)
-        MoECardHelper.onCardSectionUnloaded(this);
+        MoECardHelper.onCardSectionUnloaded(this)
+        MoEInAppHelper.getInstance().resetInAppContext()
         startActivity(intent)
     }
 
@@ -50,10 +51,10 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-//        MoEInAppHelper.getInstance().setInAppContext(setOf("Chase1"))
-//        MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner1 ->
+        MoEInAppHelper.getInstance().setInAppContext(setOf("Chase1"))
+        MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner1 ->
 //            MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
-//            Log.d("Banner1","onStart() : onSelfHandledAvailable1() : $banner1")
+            Log.d("Banner1","onStart() : onSelfHandledAvailable1() : $banner1")
 //            // Call Banner 2
 //            MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner2 ->
 //                MoEInAppHelper.getInstance().setInAppContext(setOf("Chase3"))
@@ -64,18 +65,21 @@ class SecondActivity : AppCompatActivity() {
 //                    MoEInAppHelper.getInstance().resetInAppContext()
 //                }
 //            }
-//        }
+        }
 
+        // Self handled cards implementation
         // call on section or screen load
-        MoECardHelper.onCardSectionLoaded(this){}
-        var i = MoECardHelper.getCardCategories(this)
-        var j = MoECardHelper.getCardsForCategory(this, "Offers")
-        var k = MoECardHelper.getCardsForCategory(this, CARDS_CATEGORY_ALL)
-        var l = MoECardHelper.getCardsInfo(this)
-        Log.w("cardCategories", "$i")
-        Log.w("Offers cardContent", "$j" )
-        Log.w("allContents", "$k" )
-        Log.w("allCategories & Content", "$l" )
+//        MoECardHelper.onCardSectionLoaded(this){}
+//        var i = MoECardHelper.getCardCategories(this)
+//        var j = MoECardHelper.getCardsForCategory(this, "Offers")
+//        var m = MoECardHelper.getCardsForCategory(this, "Transactions")
+//        var k = MoECardHelper.getCardsForCategory(this, CARDS_CATEGORY_ALL)
+//        var l = MoECardHelper.getCardsInfo(this)
+//        Log.w("cardCategories", "$i")
+//        Log.w("Offers cardContent", "$j" )
+//        Log.w("allContents", "$k" )
+//        Log.w("allCategories & Content", "$l" )
+//        Log.w("Transactions Cards", "$m" )
     }
 
     }
