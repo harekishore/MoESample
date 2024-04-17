@@ -58,7 +58,7 @@ class MyApplication : Application() {
 //        MoEngage.initialise(moEngage)
 
         // New v12 config
-        val moEngage = MoEngage.Builder(this, "2877NHMD0TOHATHC6NNHDERW")
+        val moEngage = MoEngage.Builder(this, "DMQ61NVM1B2JEK8USBS1H1CO")
             .configureLogs(LogConfig(LogLevel.DEBUG,isEnabledForReleaseBuild = true))
             .configureNotificationMetaData(
                 NotificationConfig(

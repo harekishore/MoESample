@@ -7,6 +7,6 @@ import com.moengage.inapp.model.SelfHandledCampaignData
 class SelfHandledCallback: SelfHandledAvailableListener {
 
     override fun onSelfHandledAvailable(data: SelfHandledCampaignData?) {
-        Log.e("inappData"," onSelfHandledAvailable() $data")
+        Log.e("CallbackinappData"," onSelfHandledAvailable() $data")
     }
 }

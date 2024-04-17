@@ -28,8 +28,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button6).setOnClickListener { appInbox() }
         findViewById<Button>(R.id.button7).setOnClickListener { cards() }
 //        var nudge = findViewById<com.moengage.widgets.NudgeView>(R.id.nudge)
-
-
     }
 
     private fun cards() {
@@ -85,13 +83,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-//        MoEInAppHelper.getInstance().showInApp(this)
+        MoEInAppHelper.getInstance().showInApp(this)
 //        findViewById<com.moengage.widgets.NudgeView>(R.id.nudge).initialiseNudgeView(activity = Activity())
         Log.d("MYTAG","Main onStart called...")
-        MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
+//        MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
         MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner2 ->
-            Log.d("Banner1","onStart() : onSelfHandledAvailable1() : $banner2")
-            MoEInAppHelper.getInstance().resetInAppContext()
+            Log.d("Banner2","onStart() : onSelfHandledAvailable1() : $banner2")
+//            MoEInAppHelper.getInstance().resetInAppContext()
         }
     }
 
