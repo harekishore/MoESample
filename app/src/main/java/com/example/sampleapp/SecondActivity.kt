@@ -5,29 +5,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import com.moengage.cards.core.CARDS_CATEGORY_ALL
 import com.moengage.cards.core.MoECardHelper
 import com.moengage.core.disableDataTracking
 import com.moengage.inapp.MoEInAppHelper
 import com.moengage.core.enableDataTracking
-import com.moengage.inapp.listeners.SelfHandledAvailableListener
 import com.moengage.inapp.model.SelfHandledCampaignData
-import java.util.logging.Logger.getLogger
 
 
 class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        findViewById<Button>(R.id.button5).setOnClickListener { dismissInapp() }
+//        findViewById<Button>(R.id.button5).setOnClickListener { dismissInapp() }
         findViewById<Button>(R.id.button5).setOnClickListener { goBack() }
         findViewById<Button>(R.id.enable).setOnClickListener { enableMoE() }
         findViewById<Button>(R.id.disable).setOnClickListener { disableMoE() }
     }
 
-    fun dismissInapp() {
-        Log.d("buttontest","Button is working")
+    fun dismissInapp(data: SelfHandledCampaignData) {
+        Log.d("buttontest", "Button is working")
+        MoEInAppHelper.getInstance().selfHandledDismissed(this, data)
     }
+
     fun goBack() {
         val intent = Intent(this, MainActivity::class.java)
         MoECardHelper.onCardSectionUnloaded(this)
@@ -57,6 +56,12 @@ class SecondActivity : AppCompatActivity() {
         super.onStart()
         MoEInAppHelper.getInstance().setInAppContext(setOf("Page1"))
         MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner1 ->
+            val btn = findViewById<Button>(R.id.button5);
+            btn.setOnClickListener {
+                if (banner1 != null) {
+                    dismissInapp(banner1)
+                }
+            }
             MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
             Log.d("Banner1", "onStart() : onSelfHandledAvailable1() : $banner1")
 //            MoEInAppHelper.getInstance().selfHandledDismissed(this, banner1)
@@ -71,7 +76,6 @@ class SecondActivity : AppCompatActivity() {
                 }
             }
         }
-//
 //                 Self handled cards implementation
 //                 call on section or screen load
 //        MoECardHelper.onCardSectionLoaded(this){}
