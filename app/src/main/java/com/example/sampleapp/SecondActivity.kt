@@ -16,14 +16,14 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-//        findViewById<Button>(R.id.button5).setOnClickListener { dismissInapp() }
-        findViewById<Button>(R.id.button5).setOnClickListener { goBack() }
+//        findViewById<Button>(R.id.button8).setOnClickListener { dismissInapp() }
+        findViewById<Button>(R.id.button8).setOnClickListener { goBack() }
         findViewById<Button>(R.id.enable).setOnClickListener { enableMoE() }
         findViewById<Button>(R.id.disable).setOnClickListener { disableMoE() }
     }
 
     fun dismissInapp(data: SelfHandledCampaignData) {
-        Log.d("buttontest", "Button is working")
+        Log.d("BannerFunction", "Button is working")
         MoEInAppHelper.getInstance().selfHandledDismissed(this, data)
     }
 
@@ -56,15 +56,8 @@ class SecondActivity : AppCompatActivity() {
         super.onStart()
         MoEInAppHelper.getInstance().setInAppContext(setOf("Page1"))
         MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner1 ->
-            val btn = findViewById<Button>(R.id.button5);
-            btn.setOnClickListener {
-                if (banner1 != null) {
-                    dismissInapp(banner1)
-                }
-            }
-            MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
             Log.d("Banner1", "onStart() : onSelfHandledAvailable1() : $banner1")
-//            MoEInAppHelper.getInstance().selfHandledDismissed(this, banner1)
+            MoEInAppHelper.getInstance().setInAppContext(setOf("Chase2"))
             // Call Banner 2
             MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner2 ->
                 MoEInAppHelper.getInstance().setInAppContext(setOf("Chase3"))
@@ -72,23 +65,16 @@ class SecondActivity : AppCompatActivity() {
                 // Call Banner 3
                 MoEInAppHelper.getInstance().getSelfHandledInApp(this) { banner3 ->
                     Log.d("Banner3", "onStart() : onSelfHandledAvailable1() : $banner3")
-                    MoEInAppHelper.getInstance().resetInAppContext()
                 }
             }
         }
-//                 Self handled cards implementation
-//                 call on section or screen load
-//        MoECardHelper.onCardSectionLoaded(this){}
-//        var i = MoECardHelper.getCardCategories(this)
-//        var j = MoECardHelper.getCardsForCategory(this, "Offers")
-//        var m = MoECardHelper.getCardsForCategory(this, "Transactions")
-//        var k = MoECardHelper.getCardsForCategory(this, CARDS_CATEGORY_ALL)
-//        var l = MoECardHelper.getCardsInfo(this)
-//        Log.w("cardCategories", "$i")
-//        Log.w("Offers cardContent", "$j" )
-//        Log.w("allContents", "$k" )
-//        Log.w("allCategories & Content", "$l" )
-//        Log.w("Transactions Cards", "$m" )
+//        val btn = findViewById<Button>(R.id.button5);
+//            btn.setOnClickListener {
+//                Log.d("dismissBanner","Banner 1 is dismissed")
+//                if (banner1 != null) {
+//                    dismissInapp(banner1)
+//                }
+//            }
     }
 }
 

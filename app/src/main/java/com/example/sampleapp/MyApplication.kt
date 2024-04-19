@@ -59,7 +59,7 @@ class MyApplication : Application() {
 
         // New v12 config
         val moEngage = MoEngage.Builder(this, "2877NHMD0TOHATHC6NNHDERW")
-            .configureLogs(LogConfig(LogLevel.DEBUG,isEnabledForReleaseBuild = true))
+            .configureLogs(LogConfig(LogLevel.VERBOSE,isEnabledForReleaseBuild = true))
             .configureNotificationMetaData(
                 NotificationConfig(
                     smallIcon = R.drawable.btn_default_small,
