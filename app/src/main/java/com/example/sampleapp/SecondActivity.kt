@@ -7,8 +7,10 @@ import android.util.Log
 import android.widget.Button
 import com.moengage.cards.core.MoECardHelper
 import com.moengage.core.disableDataTracking
+import com.moengage.core.disableSdk
 import com.moengage.inapp.MoEInAppHelper
 import com.moengage.core.enableDataTracking
+import com.moengage.core.enableSdk
 import com.moengage.inapp.model.SelfHandledCampaignData
 
 
@@ -20,6 +22,8 @@ class SecondActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button8).setOnClickListener { goBack() }
         findViewById<Button>(R.id.enable).setOnClickListener { enableMoE() }
         findViewById<Button>(R.id.disable).setOnClickListener { disableMoE() }
+        findViewById<Button>(R.id.button9).setOnClickListener { enableMoE() }
+        findViewById<Button>(R.id.button10).setOnClickListener { disableMoE() }
     }
 
     fun dismissInapp(data: SelfHandledCampaignData) {
@@ -37,7 +41,12 @@ class SecondActivity : AppCompatActivity() {
     fun enableMoE() {
         enableDataTracking(this)
     }
-
+    fun enableSDK() {
+        enableSdk(this)
+    }
+    fun disableSDK() {
+        disableSdk(this)
+    }
     fun disableMoE() {
         disableDataTracking(this)
     }
